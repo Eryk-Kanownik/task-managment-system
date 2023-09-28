@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Rubik&display=swap');
+
+body{
+    margin: 0;
+
+}
+
+*{
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6,p{
+    margin: 0;
+    padding: 0;
+}
+
+textarea{
+    resize: none;
+}
+
+input,textarea{
+    padding: 0.5rem 0.5rem ;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: solid 2px rgb(202, 202, 202);
+    background-color: white;
+    transition-duration: 0.2s;
+    font-weight: bold;
+}
+
+button{
+    padding: 0.5rem 1rem ;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: solid 3px rgb(202, 202, 202);
+    background-color: white;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    font-weight: bold;
+    &:hover{
+        border: solid 3px rgb(0, 0, 0);
+    }
+}
+
+::-webkit-scrollbar{
+    background-color: white;
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 5px;
+    background-color: rgb(194, 194, 194);
+}
+
+::-webkit-scrollbar-track{
+
+}
+
+.view{
+    height: 100vh;
+    width: 100vw;
+    padding: 5rem;
+    display: grid;
+    gap: 1rem;
+}
+
+@media only screen and (min-width:500px) {
+    .view{
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows:1fr 1fr;
+    }
+}
+
+@media only screen and (min-width:1000px) {
+    .view{
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows:1fr 1fr;
+    }
+}
+
+@media only screen and (min-width:1401px) {
+    .view{
+        grid-template-columns: 1fr 1fr 1fr 1fr !important;
+        grid-template-rows: none;
+    }
+}
+
+.section-default{
+    border-radius: 5px;
+    border: solid 1px rgb(194, 194, 194);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    &__header{
+        padding: 1rem;
+        border-bottom: solid 1px rgb(194, 194, 194);
+    }
+    &__items{
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+.created-tasks{
+    
+}
+
+.in-progress-tasks{
+
+}
+
+.finalized-tasks{
+    
+}
+
+.people{
+    &__items{
+        padding: 0.5rem;
+        &__people{
+            display: flex;
+            flex-direction: column;
+            gap:0.5rem;
+            padding: 0 0 0;
+        }
+    }
+}
+
+.task{
+    border: solid 1px rgb(194, 194, 194);
+    border-radius: 3px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    &:hover{
+        border: solid 1px rgb(116, 116, 116);
+    }
+    &--drag{
+        opacity: 0.5;
+    }
+    &__header{
+        padding: 1rem 1rem 1rem;
+    }
+    &__info{
+        margin-top: 0 !important;
+        transform: scaleY(0);
+        max-height: 0;
+        transition-duration: 0.1s;
+        transform-origin: top;
+        display: flex;
+
+        flex-direction: column;
+        overflow-y: hidden;
+        &__people{
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        &__description{
+            padding: 0.5rem 1rem;
+            
+        }
+        &__header{
+            padding: 0.5rem 1rem;
+        }
+        &__people{
+            border-top:solid 1px rgb(184, 184, 184);
+            padding: 1rem 1rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+        &--unfold{
+            margin-top: 0.5rem;
+            transform: scaleY(1);
+            max-height: 500px;
+        }
+    }
+    &__bottom{
+        border-top:solid 1px rgb(184, 184, 184);
+        justify-content: flex-end;
+        display: flex;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+}
+
+.btn--delete{
+    background-color: white;
+    border: solid 3px rgb(253, 76, 76);
+    &:hover{
+        border: solid 3px rgb(255, 0, 0);
+        background-color: rgb(255, 121, 121);
+    }
+}
+
+.btn--finish{
+    background-color: white;
+    border: solid 3px rgb(123, 221, 123);
+    &:hover{
+        border: solid 3px rgb(71, 174, 71);
+        background-color: rgb(123, 221, 123);
+    }
+}
+
+.person{
+    border-radius: 5px;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    &--drag{
+        opacity: 0.5;
+    }
+    &__wrapper{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        
+    }
+    &__image{
+        overflow: hidden;
+        border-radius: 20px;
+        height: 40px;
+        width: 40px;
+        img{
+            width: 100%;
+        }
+    }
+    &__username{
+
+    }
+    &__delete{
+        font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 0;
+            cursor: pointer;
+            transition-duration: 0.2s;
+            &:hover{
+                color: red;
+            }
+    }
+}
+
+.create-task{
+    border: solid 1px rgb(194, 194, 194);
+    padding: 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    transition-duration: 0.2s;
+    line-height: 1.2rem;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    &:hover{
+        border: solid 1px black;
+    }
+}
+
+.modal-wrapper{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(30, 30, 30, 0.657);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition-duration: 0.2s;
+
+    opacity: 0;
+    z-index: -1;
+}
+
+.modal-wrapper--show{
+    z-index: 1;
+    opacity: 1;
+}
+
+.modal{
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: 50vw;
+    background-color: white; 
+    border-radius: 5px; 
+    &__header{
+        border-bottom: solid 1px rgb(194, 194, 194);
+        padding: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &__close{
+            font-weight: bold;
+            font-size: 2rem;
+            line-height: 0;
+            cursor: pointer;
+            transition-duration: 0.2s;
+            &:hover{
+                color: red;
+            }
+        }
+    }  
+    &__content{
+        padding: 1rem;
+        border-bottom: solid 1px rgb(194, 194, 194);
+        display: flex;
+        flex-direction: column;
+        gap:0.5rem;
+    }
+    &__bottom{
+        padding: 0.5rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
